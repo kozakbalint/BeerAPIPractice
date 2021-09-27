@@ -1,0 +1,34 @@
+.beer{
+    border: 10px solid white;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: rgba(170, 214, 250, 0.418);
+}
+
+.beer img{
+    height: 150px;
+    display: block;
+    margin: auto;
+}
+
+.beer h2, .beer h3{
+    text-align: center;
+}
+
+.beer h3{
+    font-style: italic;
+    font-size: 1.2rem;
+}
+
+.beer p {
+    text-align: center;
+}
+
+.beer button {
+    margin: auto;
+    display: block;
+}
+
+.cart-icon{
+    width: 1.5rem;
+}
