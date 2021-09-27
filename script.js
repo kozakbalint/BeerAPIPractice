@@ -4,12 +4,12 @@ let cart = document.getElementById("cart")
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 
-xhr.addEventListener("readystatechange", function() {
-  if(this.readyState === 4) {
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
     //console.log(this.responseText);
     JSON.parse(this.responseText).forEach(sor => {
-        //console.log(sor.name)
-        beers.innerHTML += `
+      //console.log(sor.name)
+      beers.innerHTML += `
         <div class="col-md-3 beer">
             <img src="${sor.image_url}">
             <h2>${sor.name}</h2>
@@ -25,27 +25,27 @@ xhr.open("GET", "https://api.punkapi.com/v2/beers");
 xhr.send();
 
 let beersInCart = [];
-function addToCart(id){
+function addToCart(id) {
   console.log("Új sör hozzáadva:")
-  let url = "https://api.punkapi.com/v2/beers/"+ id;
+  let url = "https://api.punkapi.com/v2/beers/" + id;
   fetch(url)
-  .then(response => response.json())
-  .then(beer => {
-    beersInCart.push(beer)
-    refreshCart()
-    document.getElementById("cart-num").innerHTML = beersInCart.length
-  })
+    .then(response => response.json())
+    .then(beer => {
+      beersInCart.push(beer)
+      refreshCart()
+      document.getElementById("cart-num").innerHTML = beersInCart.length
+    })
 }
 
-function refreshCart(){
+function refreshCart() {
   cart.innerHTML = ""
   beersInCart.forEach(beer => {
-    cart += `
+    cart.innerHTML += `
       <div class="row">
         <div class="col-sm-3">
-          <img src="${beer.image_url}">
+          <img src="${beer[0].image_url}">
         </div>
-        <div class="col-sm-9">${beer.name}</div>
+        <div class="col-sm-9">${beer[0].name}</div>
       </div>
     `;
   });
